@@ -1,5 +1,7 @@
 <script lang="ts">
-
+	import AuthCheck from '$lib/components/authCheck.svelte';
 </script>
 
-<h3>Username</h3>
+<AuthCheck>
+	<h3>Username</h3>
+</AuthCheck>
