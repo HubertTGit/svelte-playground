@@ -1,7 +1,16 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { user } from '$lib/firebase';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	function edit() {
+		if ($user) {
+			goto(`/${data.username}edit`);
+		}
+
+		goto('/login');
+	}
 </script>
 
 <svelte:head>
@@ -23,5 +32,5 @@
 		{/each} -->
 	</ul>
 
-	<a href={`/${data.username}/edit`} class="link"> EDIT profile</a>
+	<a href="/" on:click|preventDefault={edit} class="link"> EDIT profile</a>
 </main>

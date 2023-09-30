@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
-import { doc, getFirestore, onSnapshot } from 'firebase/firestore';
+import { collection, doc, getFirestore, onSnapshot } from 'firebase/firestore';
 import { getAuth, type User, onAuthStateChanged } from 'firebase/auth';
 import { derived, writable, type Readable } from 'svelte/store';
 
@@ -81,6 +81,24 @@ function docStore<T>(path: string) {
 	};
 }
 
+function collectionStore<T>(path: string) {
+	let unsubscribe: () => void;
+
+	const colRef = collection(db, path);
+
+	const { subscribe } = writable<T[]>([], (set) => {
+		unsubscribe = onSnapshot(colRef, (snap) => {
+			set(snap.docs.map((doc) => doc.data() as T));
+		});
+
+		return () => unsubscribe();
+	});
+
+	return {
+		subscribe
+	};
+}
+
 export const userData: Readable<IUserData | null> = derived(user, ($user, set) => {
 	if ($user) {
 		return docStore<IUserData>(`users/${$user.uid}`).subscribe(set);
@@ -88,3 +106,5 @@ export const userData: Readable<IUserData | null> = derived(user, ($user, set) =
 		set(null);
 	}
 });
+
+export const users: Readable<IUserData[]> = collectionStore<IUserData>('users');
