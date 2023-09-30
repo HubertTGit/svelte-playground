@@ -38,6 +38,10 @@
 		>
 	</div>
 
-	<button class="btn btn-sm btn-outline" on:click={logout}>logout</button>
+	{#if $user}
+		<button class="btn btn-sm btn-outline" on:click={logout}>logout</button>
+	{:else}
+		<a class="btn btn-sm btn-outline" href="/login">login</a>
+	{/if}
 </header>
 <slot />

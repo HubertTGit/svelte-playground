@@ -54,11 +54,34 @@
 			links: event.detail
 		});
 	}
+
+	async function publish(event: any) {
+		await updateDoc(doc(db, 'users', $user!.uid), {
+			published: !$userData?.published
+		});
+	}
 </script>
 
 <main class="max-w-xl mx-auto">
 	{#if $userData?.username === $page.params.username}
 		<h1 class="mx-2 text-2xl font-bold mt-8 mb-4 text-center">Edit your Profile</h1>
+
+		<h2 class=" text-green-600 text-3xl text-center">@{$userData?.username}</h2>
+
+		<!-- published -->
+		<div class=" m-auto">
+			<div class="form-control">
+				<label class="cursor-pointer label">
+					<span class="label-text">publish</span>
+					<input
+						type="checkbox"
+						class="toggle toggle-accent"
+						checked={$userData.published}
+						on:change={publish}
+					/>
+				</label>
+			</div>
+		</div>
 
 		<!-- sortable list -->
 		<SortableList list={$userData.links} let:index let:item on:sort={updateSort}>
