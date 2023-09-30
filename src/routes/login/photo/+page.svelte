@@ -48,4 +48,6 @@
 		<p>Uploading...</p>
 		<progress class="progress progress-info w-56 mt-6" />
 	{/if}
+
+	<a href={`/${$userData?.username}/edit`} class="btn btn-primary">EDIT</a>
 </CheckAuth>

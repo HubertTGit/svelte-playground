@@ -25,11 +25,14 @@ export interface IUserData {
 	photoURL: string | null;
 	published: boolean;
 	bio: string;
-	links: {
-		title: string;
-		url: string;
-		icon: string;
-	}[];
+	links: ILink[];
+}
+
+export interface ILink {
+	title: string;
+	url: string;
+	icon: string;
+	id?: string;
 }
 
 /**

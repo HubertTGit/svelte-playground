@@ -21,7 +21,7 @@
 			<!-- row 1 -->
 			{#each $users as user, index}
 				<tr class=" hover:bg-slate-400 cursor-pointer" on:click={() => detail(user.username)}>
-					<th>{index}</th>
+					<th>{index + 1}</th>
 					<td>
 						<div class="avatar">
 							<div class="w-8 rounded">

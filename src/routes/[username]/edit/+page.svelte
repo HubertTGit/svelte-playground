@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
-	import { user, db, userData } from '$lib/firebase';
+	import { user, db, userData, type ILink } from '$lib/firebase';
 	import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import UserLink from '$lib/components/userLink.svelte';
+	import SortableList from '$lib/components/sortableList.svelte';
 
 	const icons = ['Twitter', 'YouTube', 'TikTok', 'LinkedIn', 'GitHub', 'Custom'];
 
@@ -33,10 +33,10 @@
 		});
 	}
 
-	async function deleteLink(id: string) {
+	async function deleteLink(item: ILink): Promise<void> {
 		const userRef = doc(db, 'users', $user!.uid);
 		await updateDoc(userRef, {
-			links: arrayRemove({ id })
+			links: arrayRemove(item)
 		});
 	}
 
@@ -48,11 +48,30 @@
 		});
 		showForm = false;
 	}
+
+	async function updateSort(event: CustomEvent) {
+		await updateDoc(doc(db, 'users', $user!.uid), {
+			links: event.detail
+		});
+	}
 </script>
 
 <main class="max-w-xl mx-auto">
 	{#if $userData?.username === $page.params.username}
 		<h1 class="mx-2 text-2xl font-bold mt-8 mb-4 text-center">Edit your Profile</h1>
+
+		<!-- sortable list -->
+		<SortableList list={$userData.links} let:index let:item on:sort={updateSort}>
+			<div class="relative group">
+				<UserLink {...item} />
+
+				<button
+					class="btn btn-sm btn-error invisible group-hover:visible transition-all absolute -right-10 top-0 z-10"
+					on:click={() => deleteLink(item)}>delete</button
+				>
+			</div>
+		</SortableList>
+		<!-- sortable list -->
 
 		<!-- INSERT sortable list -->
 		{#if showForm}

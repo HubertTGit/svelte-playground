@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import UserLink from '$lib/components/userLink.svelte';
 	import { user } from '$lib/firebase';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 	function edit() {
 		if ($user) {
-			goto(`/${data.username}edit`);
+			goto(`/${data.username}/edit`);
+		} else {
+			goto('/login');
 		}
-
-		goto('/login');
 	}
 </script>
 
@@ -27,9 +28,11 @@
 
 	<p class="text-xl my-8">{data.bio ?? 'no bio yet...'}</p>
 	<ul class="list-none">
-		<!-- {#each data.links as item}
-			{@debug item}
-		{/each} -->
+		{#each data.links as item}
+			<li class="my-4">
+				<UserLink {...item} />
+			</li>
+		{/each}
 	</ul>
 
 	<a href="/" on:click|preventDefault={edit} class="link"> EDIT profile</a>
