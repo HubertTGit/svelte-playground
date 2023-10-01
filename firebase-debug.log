@@ -1,0 +1,29 @@
+[debug] [2023-10-01T18:14:21.270Z] ----------------------------------------------------------------------
+[debug] [2023-10-01T18:14:21.272Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-10-01T18:14:21.272Z] CLI Version:   11.25.1
+[debug] [2023-10-01T18:14:21.272Z] Platform:      darwin
+[debug] [2023-10-01T18:14:21.272Z] Node Version:  v20.2.0
+[debug] [2023-10-01T18:14:21.272Z] Time:          Sun Oct 01 2023 20:14:21 GMT+0200 (Central European Summer Time)
+[debug] [2023-10-01T18:14:21.272Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-10-01T18:14:21.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-10-01T18:14:21.322Z] > authorizing via signed-in user (hubert.talib@gmail.com)
+[debug] [2023-10-01T18:14:21.322Z] [iam] checking project ai-testing-396020 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2023-10-01T18:14:21.323Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-testing-396020:testIamPermissions [none]
+[debug] [2023-10-01T18:14:21.323Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-testing-396020:testIamPermissions x-goog-quota-user=projects/ai-testing-396020
+[debug] [2023-10-01T18:14:21.323Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-testing-396020:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2023-10-01T18:14:22.120Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-testing-396020:testIamPermissions 200
+[debug] [2023-10-01T18:14:22.121Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-testing-396020:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2023-10-01T18:14:22.121Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ai-testing-396020 [none]
+[debug] [2023-10-01T18:14:22.398Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ai-testing-396020 200
+[debug] [2023-10-01T18:14:22.398Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ai-testing-396020 {"projectId":"ai-testing-396020","projectNumber":"1087361350826","displayName":"AI-testing","name":"projects/ai-testing-396020","resources":{"hostingSite":"ai-testing-396020","storageBucket":"ai-testing-396020.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_604c1e98-8d0e-45a6-ac5a-3fac29f267ac"}
+[debug] [2023-10-01T18:14:23.031Z] defaultcredentials: writing to file /Users/hubert.talib/.config/firebase/hubert_talib_gmail.com_application_default_credentials.json
+[debug] [2023-10-01T18:14:23.032Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/ai-testing-396020/sites pageToken=&pageSize=10
+[debug] [2023-10-01T18:14:24.170Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/ai-testing-396020/sites 200
+[debug] [2023-10-01T18:14:24.170Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/ai-testing-396020/sites {"sites":[{"name":"projects/ai-testing-396020/sites/ai-testing-396020","defaultUrl":"https://ai-testing-396020.web.app","appId":"1:1087361350826:web:de09d0c487a4e739ce64d3","type":"DEFAULT_SITE"}]}
+[debug] [2023-10-01T18:14:24.171Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1087361350826:web:de09d0c487a4e739ce64d3/config [none]
+[debug] [2023-10-01T18:14:25.214Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1087361350826:web:de09d0c487a4e739ce64d3/config 200
+[debug] [2023-10-01T18:14:25.214Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1087361350826:web:de09d0c487a4e739ce64d3/config {"projectId":"ai-testing-396020","appId":"1:1087361350826:web:de09d0c487a4e739ce64d3","storageBucket":"ai-testing-396020.appspot.com","locationId":"europe-west","apiKey":"AIzaSyAyTEMNYKBxn9nNe323BvxblIw8wR4L_-4","authDomain":"ai-testing-396020.firebaseapp.com","messagingSenderId":"1087361350826","measurementId":"G-4R57R1NMPY"}
+[debug] [2023-10-01T18:14:30.162Z] Error: ENOENT: no such file or directory, lstat '/Users/hubert.talib/Development/svelte-playground/Users/hubert.talib/Development/svelte-playground/.svelte-kit/output/server'
+[error] 
+[error] Error: An unexpected error has occurred.
