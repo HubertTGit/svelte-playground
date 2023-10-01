@@ -3,10 +3,24 @@
 	import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
 	async function signInHandler() {
-		const user = await signInWithPopup(auth, new GoogleAuthProvider());
+		const credential = await signInWithPopup(auth, new GoogleAuthProvider());
+		const tokenId = await credential.user.getIdToken();
+
+		console.log(tokenId);
+
+		const res = await fetch('/api/signin', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ tokenId })
+		});
 	}
 
 	async function signOutHandler() {
+		const rest = await fetch('/api/signin', {
+			method: 'DELETE'
+		});
 		await signOut(auth);
 	}
 </script>
