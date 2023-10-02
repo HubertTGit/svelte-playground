@@ -5,6 +5,7 @@ import { getAuth, type User, onAuthStateChanged } from 'firebase/auth';
 import { derived, writable, type Readable } from 'svelte/store';
 
 const firebaseConfig = {
+	apiKey: 'AIzaSyAyTEMNYKBxn9nNe323BvxblIw8wR4L_-4',
 	authDomain: 'ai-testing-396020.firebaseapp.com',
 	projectId: 'ai-testing-396020',
 	storageBucket: 'ai-testing-396020.appspot.com',
