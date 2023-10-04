@@ -6,6 +6,10 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
+env:
+  FB_PROJECT_ID: '${{ vars.FB_PROJECT_ID }}'
+  FB_CLIENT_EMAIL: '${{ vars.FB_CLIENT_EMAIL }}'
+  FB_PRIVATE_KEY: '${{ vars.FB_PRIVATE_KEY }}'
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest

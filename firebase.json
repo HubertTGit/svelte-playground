@@ -16,6 +16,9 @@
 		"storage": {
 			"port": 9199
 		},
+		"hosting": {
+			"port": 9095
+		},
 		"ui": {
 			"enabled": true
 		},
