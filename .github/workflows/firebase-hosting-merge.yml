@@ -6,17 +6,18 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-env:
-  FB_PROJECT_ID: '${{ vars.FB_PROJECT_ID }}'
-  FB_CLIENT_EMAIL: '${{ vars.FB_CLIENT_EMAIL }}'
-  FB_PRIVATE_KEY: '${{ vars.FB_PRIVATE_KEY }}'
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Deploying to Firebase Hosting on merge...$FB_PROJECT_ID"
       - run: npm ci && npm run build
+        env:
+          FB_PROJECT_ID: '${{ secrets.FB_PROJECT_ID }}'
+          FB_CLIENT_EMAIL: '${{ secrets.FB_CLIENT_EMAIL }}'
+          FB_PRIVATE_KEY: '${{ secrets.FB_PRIVATE_KEY }}'
+      - run: echo "Deploying to Firebase Hosting! $FB_PROJECT_ID"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
