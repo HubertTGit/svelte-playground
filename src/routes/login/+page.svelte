@@ -6,8 +6,6 @@
 		const credential = await signInWithPopup(auth, new GoogleAuthProvider());
 		const tokenId = await credential.user.getIdToken();
 
-		console.log(tokenId);
-
 		const res = await fetch('/api/signin', {
 			method: 'POST',
 			headers: {
