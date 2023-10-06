@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: echo "projectID ${{ secrets.FB_PROJECT_ID }}, ${{ secrets.FB_PROJECT_ID.length }}"
+      - run: echo "email ${{ secrets.FB_CLIENT_EMAIL.length }}"
+      - run: echo "secret ${{ secrets.FB_PRIVATE_KEY.length }}"
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
